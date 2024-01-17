@@ -1,0 +1,9 @@
+sudo:required
+services:
+  - docker
+
+before_install:
+  - docker build -t jafarolamide/docker-react -f Docekerfile.dev .
+
+script:
+  - docker run jafarolamide/docker-react npm run test -- --coverage 
