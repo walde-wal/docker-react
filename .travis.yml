@@ -7,3 +7,14 @@ before_install:
 
 script:
   - docker run -e CI=true jafarolamide/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-1"
+  app: "docker-react-app"
+  env: "Docker-react-app-env"
+  bucket_name: "elasticbeanstalk-eu-west-1-857760943079"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
